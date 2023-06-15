@@ -1,6 +1,6 @@
 import {Component} from '@angular/core';
 import {ActivatedRoute, Router} from "@angular/router";
-import {OidcSecurityService} from "angular-auth-oidc-client";
+import {AuthService} from "@auth0/auth0-angular";
 
 @Component({
   selector: 'app-authenticated-callback',
@@ -8,15 +8,14 @@ import {OidcSecurityService} from "angular-auth-oidc-client";
   styleUrls: ['./authenticated-callback.component.scss']
 })
 export class AuthenticatedCallbackComponent {
-  constructor(private oidcSecurityService: OidcSecurityService, private router: Router, private activatedRoute: ActivatedRoute) {
-    this.oidcSecurityService.checkAuth()
-      .subscribe(({isAuthenticated, userData, accessToken, idToken}) => {
-        if (!isAuthenticated) {
-          this.router.navigate(['/anonymous-views']);
-          return;
-        }
+  constructor(private authService: AuthService, private router: Router, private activatedRoute: ActivatedRoute) {
+    this.authService.isAuthenticated$.subscribe((isAuthenticated) => {
+      if (!isAuthenticated) {
+        this.router.navigate(['/anonymous-views']);
+        return;
+      }
 
-        this.router.navigate(['/secured-views']);
-      });
+      this.router.navigate(['/secured-views']);
+    });
   }
 }

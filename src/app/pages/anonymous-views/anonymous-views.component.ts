@@ -1,7 +1,7 @@
 import {Component} from '@angular/core';
 import {Router} from "@angular/router";
 import {map, Observable, take} from "rxjs";
-import {OidcSecurityService} from "angular-auth-oidc-client";
+import {AuthService} from "@auth0/auth0-angular";
 
 @Component({
   selector: 'app-anonymous-views',
@@ -11,16 +11,15 @@ import {OidcSecurityService} from "angular-auth-oidc-client";
 export class AnonymousViewsComponent {
   isAuthenticated: Observable<boolean>;
 
-  constructor(private oidcSecurityService: OidcSecurityService, private router: Router) {
-    this.isAuthenticated = this.oidcSecurityService.isAuthenticated$
+  constructor(private authService: AuthService, private router: Router) {
+    this.isAuthenticated = this.authService.isAuthenticated$
       .pipe(
-        take(1),
-        map(authResult => authResult.isAuthenticated)
+        take(1)
       );
   }
 
   login() {
-    this.oidcSecurityService.authorize();
+    this.authService.loginWithRedirect();
   }
 
   toSecuredView() {

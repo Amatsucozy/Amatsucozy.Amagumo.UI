@@ -1,25 +1,27 @@
 import {NgModule} from '@angular/core';
-import {AuthModule} from 'angular-auth-oidc-client';
-import {environment} from "../../environments/environment";
-import {Constants} from "../constants/constants";
+import {AuthModule} from "@auth0/auth0-angular";
 
 @NgModule({
   imports: [AuthModule.forRoot({
-    config: {
-      authority: 'https://localhost:60000',
-      redirectUrl: window.location.origin,
-      postLogoutRedirectUri: window.location.origin,
-      clientId: 'pms-ui',
-      scope: 'openid profile sts accounts pms', // 'openid profile ' + your scopes
-      responseType: 'code',
-      secureRoutes: [
-        `${environment.apis.sts}${Constants.routeTypes.secured}/`,
-        `${environment.apis.accounts}${Constants.routeTypes.secured}/`,
-        `${environment.apis.pms}${Constants.routeTypes.secured}/`
-      ],
-      silentRenew: true,
-      silentRenewUrl: window.location.origin + '/silent-renew.html',
-      renewTimeBeforeTokenExpiresInSeconds: 10,
+    domain: 'amagumo-dev.jp.auth0.com',
+    clientId: 'DORzLmRtieenTGQM02oNFFeqlb6JAbQw',
+    authorizationParams: {
+      redirect_uri: window.location.origin,
+      audience: 'https://amagumo-dev.jp.auth0.com/api/v2/',
+      scope: 'read:current_user'
+    },
+    httpInterceptor: {
+      allowedList: [
+        {
+          uri: 'https://amagumo-dev.jp.auth0.com/api/v2/*',
+          tokenOptions: {
+            authorizationParams: {
+              audience: 'https://amagumo-dev.jp.auth0.com/api/v2/',
+              scope: 'read:current_user'
+            }
+          }
+        }
+      ]
     }
   })],
   exports: [AuthModule],
