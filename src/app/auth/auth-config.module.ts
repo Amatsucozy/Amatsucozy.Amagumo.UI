@@ -1,23 +1,24 @@
 import {NgModule} from '@angular/core';
 import {AuthModule} from "@auth0/auth0-angular";
+import {environment} from "../../environments/environment";
 
 @NgModule({
   imports: [AuthModule.forRoot({
-    domain: 'amagumo-dev.jp.auth0.com',
-    clientId: 'DORzLmRtieenTGQM02oNFFeqlb6JAbQw',
+    domain: environment.auth0Domain,
+    clientId: environment.auth0ClientId,
     authorizationParams: {
       redirect_uri: window.location.origin,
-      audience: 'https://amagumo-dev.jp.auth0.com/api/v2/',
-      scope: 'read:current_user'
+      audience: environment.auth0Audience,
+      scope: 'openid email profile read:current_user write:current_user'
     },
     httpInterceptor: {
       allowedList: [
         {
-          uri: 'https://amagumo-dev.jp.auth0.com/api/v2/*',
+          uri: 'https://localhost:5443/Secured/api/*',
           tokenOptions: {
             authorizationParams: {
-              audience: 'https://amagumo-dev.jp.auth0.com/api/v2/',
-              scope: 'read:current_user'
+              audience: environment.auth0Audience,
+              scope: 'openid email profile read:current_user write:current_user'
             }
           }
         }

@@ -10,7 +10,6 @@ import {AuthService} from "@auth0/auth0-angular";
 export class SecuredViewsComponent {
   constructor(private authService: AuthService, private accountsService: AccountsService) {
     this.accountsService.getAccount().subscribe();
-    this.accountsService.getAccountPublic().subscribe();
   }
 
   logout() {
