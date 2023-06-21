@@ -9,7 +9,23 @@ import {AuthService} from "@auth0/auth0-angular";
 })
 export class SecuredViewsComponent {
   constructor(private authService: AuthService, private accountsService: AccountsService) {
-    this.accountsService.getAccount().subscribe();
+    this.accountsService.getAccount()
+      .subscribe({
+        next: (account) => {
+          console.log(account);
+        },
+        error: (error) => {
+          if (error.status === 404) {
+            this.accountsService.createAccount().subscribe({
+              next: (result) => {
+                if (result) {
+                  window.location.reload();
+                }
+              }
+            });
+          }
+        }
+      });
   }
 
   logout() {

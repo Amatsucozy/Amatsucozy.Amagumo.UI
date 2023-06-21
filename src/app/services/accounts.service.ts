@@ -12,6 +12,14 @@ export class AccountsService {
   }
 
   getAccount(): Observable<IAccountModel> {
-    return this.httpClient.get<IAccountModel>(`${environment.apis.system}${Constants.routeTypes.secured}/api/Users?id=5EF9EDE3-9299-4161-AE78-6F89EE2750D2&auth0id=5EF9EDE3-9299-4161-AE78-6F89EE2750D2`);
+    return this.httpClient.get<IAccountModel>(`${environment.apis.system}${Constants.routeTypes.secured}/api/Users`);
+  }
+
+  createAccount(): Observable<boolean> {
+    return this.httpClient.post<boolean>(`${environment.apis.system}${Constants.routeTypes.secured}/api/Users`, {
+      firstName: 'John',
+      lastName: 'Doe',
+      email: 'john.doe@amagumo.co.jp'
+    });
   }
 }
