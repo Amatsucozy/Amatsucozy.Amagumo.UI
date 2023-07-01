@@ -5,22 +5,25 @@ import {MatSidenavModule} from "@angular/material/sidenav";
 import {SecuredViewsRoutingModule} from "./secured-views-routing.module";
 import {MatToolbarModule} from "@angular/material/toolbar";
 import {MatButtonModule} from "@angular/material/button";
-import {AccountsService} from "../../services/accounts.service";
+import {UsersService} from "../../services/users.service";
+import {FilePondModule} from "ngx-filepond";
+import {SideNavigationModule} from "../../shared/side-navigation/side-navigation.module";
 
 
 @NgModule({
   declarations: [
     SecuredViewsComponent
   ],
-  imports: [
-    SecuredViewsRoutingModule,
-    CommonModule,
-    MatSidenavModule,
-    MatToolbarModule,
-    MatButtonModule
-  ],
+    imports: [
+        SecuredViewsRoutingModule,
+        CommonModule,
+        MatSidenavModule,
+        MatToolbarModule,
+        MatButtonModule,
+        SideNavigationModule
+    ],
   providers: [
-    AccountsService
+    UsersService
   ]
 })
 export class SecuredViewsModule {

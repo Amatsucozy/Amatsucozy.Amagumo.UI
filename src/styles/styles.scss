@@ -13,3 +13,11 @@ body {
 h1 {
   @apply text-2xl;
 }
+
+a {
+  @apply cursor-pointer #{!important};
+}
+
+a.mat-mdc-list-item {
+  @apply hover:bg-gray-500 hover:text-black hover:bg-opacity-20;
+}

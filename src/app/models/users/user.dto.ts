@@ -1,4 +1,4 @@
-export interface IAccountModel {
+export interface IUserDto {
   firstName: string;
   lastName: string;
   nickname: string;

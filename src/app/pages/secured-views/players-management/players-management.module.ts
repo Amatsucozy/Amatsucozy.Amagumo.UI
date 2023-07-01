@@ -1,9 +1,12 @@
 import {NgModule} from '@angular/core';
 import {CommonModule} from '@angular/common';
+import {PlayersManagementComponent} from './players-management.component';
 
 
 @NgModule({
-  declarations: [],
+  declarations: [
+    PlayersManagementComponent
+  ],
   imports: [
     CommonModule
   ]

@@ -1,9 +1,12 @@
 import {NgModule} from '@angular/core';
 import {CommonModule} from '@angular/common';
+import {FixturesManagementComponent} from './fixtures-management.component';
 
 
 @NgModule({
-  declarations: [],
+  declarations: [
+    FixturesManagementComponent
+  ],
   imports: [
     CommonModule
   ]

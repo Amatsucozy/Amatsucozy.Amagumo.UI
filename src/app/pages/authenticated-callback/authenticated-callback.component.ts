@@ -1,5 +1,5 @@
 import {Component} from '@angular/core';
-import {ActivatedRoute, Router} from "@angular/router";
+import {Router} from "@angular/router";
 import {AuthService} from "@auth0/auth0-angular";
 
 @Component({
@@ -8,7 +8,7 @@ import {AuthService} from "@auth0/auth0-angular";
   styleUrls: ['./authenticated-callback.component.scss']
 })
 export class AuthenticatedCallbackComponent {
-  constructor(private authService: AuthService, private router: Router, private activatedRoute: ActivatedRoute) {
+  constructor(private authService: AuthService, private router: Router) {
     this.authService.isAuthenticated$.subscribe((isAuthenticated) => {
       if (!isAuthenticated) {
         this.router.navigate(['/anonymous-views']);

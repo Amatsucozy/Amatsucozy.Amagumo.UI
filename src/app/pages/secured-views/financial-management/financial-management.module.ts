@@ -1,9 +1,12 @@
 import {NgModule} from '@angular/core';
 import {CommonModule} from '@angular/common';
+import {FinancialManagementComponent} from './financial-management.component';
 
 
 @NgModule({
-  declarations: [],
+  declarations: [
+    FinancialManagementComponent
+  ],
   imports: [
     CommonModule
   ]

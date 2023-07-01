@@ -19,10 +19,6 @@ const routes: Routes = [
     canActivate: [AuthGuard]
   },
   {
-    path: 'accounts',
-    loadChildren: () => import('./pages/accounts/accounts.module').then(m => m.AccountsModule)
-  },
-  {
     path: 'challenge',
     component: AuthenticatedCallbackComponent
   }

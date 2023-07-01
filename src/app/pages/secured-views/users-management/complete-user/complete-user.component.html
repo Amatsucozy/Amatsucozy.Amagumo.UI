@@ -1,0 +1,32 @@
+<div class="flex flex-col justify-center items-center">
+  <mat-card *ngIf="completeUserForm">
+    <mat-card-header class="justify-center items-center">
+      <mat-card-title>
+        <h1>Complete your profile</h1>
+      </mat-card-title>
+    </mat-card-header>
+    <mat-card-content>
+      <form [formGroup]="completeUserForm" class="flex flex-col w-[25rem]">
+        <mat-form-field appearance="outline">
+          <input matInput placeholder="Email" formControlName="email" name="email" autocomplete="off">
+        </mat-form-field>
+        <mat-form-field appearance="outline">
+          <input matInput placeholder="First Name" formControlName="firstName" name="firstName"
+                 autocomplete="given-name">
+        </mat-form-field>
+        <mat-form-field appearance="outline">
+          <input matInput placeholder="Last Name" formControlName="lastName" name="lastName" autocomplete="family-name">
+        </mat-form-field>
+        <!-- app.component.html -->
+        <div class="flex flex-row justify-center items-center">
+          <button mat-raised-button color="primary" type="submit"
+                  [disabled]="completeUserForm.invalid"
+                  (click)="completeUser()">
+            Save
+          </button>
+        </div>
+      </form>
+    </mat-card-content>
+  </mat-card>
+</div>
+

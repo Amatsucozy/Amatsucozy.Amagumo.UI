@@ -14,7 +14,7 @@ import {environment} from "../../environments/environment";
     httpInterceptor: {
       allowedList: [
         {
-          uri: 'https://localhost:5443/Secured/api/*',
+          uri: 'https://localhost:5443/api/Users*',
           tokenOptions: {
             authorizationParams: {
               audience: environment.auth0Audience,

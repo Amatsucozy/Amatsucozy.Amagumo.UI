@@ -21,8 +21,12 @@ const routes: Routes = [
         loadChildren: () => import('./financial-management/financial-management.module').then(m => m.FinancialManagementModule)
       },
       {
-        path: 'fixtures-management',
+        path: 'players-management',
         loadChildren: () => import('./players-management/players-management.module').then(m => m.PlayersManagementModule)
+      },
+      {
+        path: 'users-management',
+        loadChildren: () => import('./users-management/users-management.module').then(m => m.UsersManagementModule)
       }
     ]
   }

@@ -1,6 +1,6 @@
 import {Component} from '@angular/core';
 import {Router} from "@angular/router";
-import {map, Observable, take} from "rxjs";
+import {Observable, take} from "rxjs";
 import {AuthService} from "@auth0/auth0-angular";
 
 @Component({
